@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "includeFiles": "templates/*,static/*,*.html"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py",
+      "methods": ["GET", "POST", "OPTIONS"]
+    }
+  ],
+  "env": {
+    "PYTHONUNBUFFERED": "1",
+    "NODE_ENV": "production"
+  }
+}
